@@ -2,7 +2,7 @@
  * @Date: 2020-10-28 09:45:29
  * @LastEditors: 小枫
  * @description: 发布公告
- * @LastEditTime: 2020-10-28 10:46:00
+ * @LastEditTime: 2020-10-28 21:00:39
  * @FilePath: \book-admin\src\views\notice\PublishNotice.vue
 -->
 <template>
@@ -11,7 +11,7 @@
     <mavon-editor v-model="oldContent" @change="changeData" style="min-height: 600px;" ref="mavon"/>
   </div>
 </template>
-
+// TODO 动态管理
 <script>
   export default {
     data() {
@@ -37,10 +37,12 @@
           const noticeObj = {...this.notice}
           noticeObj.noticeContent.match(/<h1><[\s\S]+><\/[\s\S]+>([\s\S]+)<\/h1>/)
           noticeObj.noticeTitle = RegExp.$1
-          console.log(noticeObj);
+          // console.log(noticeObj);
           this.$http.post("/notice/releasenotice", noticeObj).then((res) => {
             if (res) {
+              // console.log(res);
               this.$message.success('发布成功')
+              this.$socket.emit('send_notice', res.data.obj)
               this.oldContent = ''
             }
           })

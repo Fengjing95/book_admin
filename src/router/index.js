@@ -2,7 +2,7 @@
  * @Date: 2020-10-22 15:44:18
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-10-28 09:47:09
+ * @LastEditTime: 2020-10-29 20:45:52
  * @FilePath: \book-admin\src\router\index.js
  */
 import Vue from 'vue'
@@ -51,6 +51,13 @@ const routes = [
         component: () => import('../views/notice/PublishNotice'),
         meta: {
           title: '发布公告'
+        }
+      },
+      {
+        path: '/report',
+        component: () => import('../views/report/Report'),
+        meta: {
+          title: '处理举报信息'
         }
       },
       {

@@ -2,11 +2,31 @@
  * @Date: 2020-10-22 17:15:14
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-10-25 13:24:02
+ * @LastEditTime: 2020-10-30 15:37:47
  * @FilePath: \book-admin\src\views\user\FreezeList.vue
 -->
 <template>
   <div class="user-list">
+    <div style="text-align: left;display: flex;">
+      <el-select v-model="type" placeholder="请选择分类">
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+          </el-option>
+      </el-select>
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :page-count="allPageNum"
+        :reviewPageNum="pageNum"
+        @current-change="currentPageChange"
+        style="flex: 1;"
+      >
+      </el-pagination>
+    </div>
+
     <el-table :data="freezeList" style="width: 100%">
       <el-table-column prop="userId" label="用户ID" width="100px">
       </el-table-column>
@@ -55,14 +75,6 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
-      background
-      layout="prev, pager, next"
-      :page-count="allPageNum"
-      :reviewPageNum="pageNum"
-      @current-change="currentPageChange"
-    >
-    </el-pagination>
   </div>
 </template>
 
@@ -74,12 +86,18 @@ export default {
       freezeList: [],
       pageNum: 1,
       allPageNum: null,
+      type: 2,
+      options: [
+        {value: 0, label: '禁言中'},
+        {value: 1, label: '已解除'},
+        {value: 2, label: '全部'}
+      ]
     };
   },
   methods: {
     getFreezeList() {
       this.$http
-        .get(`/admin/banned/querybanned?pageNumber=${this.pageNum}&pageSize=10`)
+        .get(`/admin/banned/querybanned?pageNumber=${this.pageNum}&pageSize=10&type=${this.type}`)
         .then((res) => {
           if (res) {
             this.freezeList = res.data.obj.content;
@@ -100,6 +118,11 @@ export default {
       this.pageNum = val
       this.getFreezeList()
     },
+  },
+  watch: {
+    type() {
+      this.getFreezeList()
+    }
   },
   created() {
     this.getFreezeList();

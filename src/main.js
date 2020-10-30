@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-09-24 09:53:10
  * @LastEditors: 小枫
- * @LastEditTime: 2020-10-28 09:56:53
+ * @LastEditTime: 2020-10-30 10:41:29
  * @FilePath: \book-admin\src\main.js
  */
 import Vue from 'vue'
@@ -15,6 +15,25 @@ import { message as Message } from './plugins/resetMessage'
 import md5 from 'md5'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+import VueSocketIO from 'vue-socket.io'
+import socket from 'socket.io-client';
+
+// Socket
+Vue.use(
+  new VueSocketIO({
+    debug: true,
+    // connection: socket(`http://192.168.43.168:8081`, {
+      connection: socket(`http://192.168.1.162:8081`, {
+      path: '',
+      transports: ['websocket', 'xhr-polling', 'jsonp-polling']
+    }),
+    vuex: {
+      store,
+      mutationPrefix: "SOCKET_",
+      actionPrefix: ""
+    },
+  })
+)
 
 // 引入编辑器
 Vue.use(mavonEditor)

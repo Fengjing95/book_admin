@@ -2,7 +2,7 @@
  * @Date: 2020-10-22 15:43:27
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-10-22 16:08:28
+ * @LastEditTime: 2020-10-30 12:08:52
  * @FilePath: \book-admin\src\App.vue
 -->
 <template>
@@ -14,6 +14,21 @@
 <script>
 export default {
   name: 'app',
+  methods: {
+    getReport() {
+      this.$http.get(`/report/queryreport?pageNumber=1&pageSize=1&type=2`).then(
+        res => {
+          if(res) {
+            
+            this.$store.commit('setReportNum',res.data.obj.totalSize)
+          }
+        }
+      )
+    },
+  },
+  created () {
+    this.getReport()
+  },
 }
 </script>
 

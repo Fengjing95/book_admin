@@ -2,7 +2,7 @@
  * @Date: 2020-10-22 16:33:32
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-10-28 09:41:16
+ * @LastEditTime: 2020-10-30 16:11:44
  * @FilePath: \book-admin\src\views\LayoutItem\Aside.vue
 -->
 <template>
@@ -26,7 +26,7 @@
           <span>用户管理</span>
         </template>
         <el-menu-item index="userlist">用户列表</el-menu-item>
-        <el-menu-item index="freezelist">已冻结用户</el-menu-item>
+        <el-menu-item index="freezelist">冻结记录</el-menu-item>
       </el-submenu>
 
       <el-submenu index="2">
@@ -37,6 +37,12 @@
         <el-menu-item index="noticelist">公告列表</el-menu-item>
         <el-menu-item index="publishnotice">发布公告</el-menu-item>
       </el-submenu>
+
+      <el-menu-item index="report">
+        处理举报
+        <el-badge v-show="$store.getters.getReportNum!==0"  :value="$store.getters.getReportNum" :max="99">
+        </el-badge>
+      </el-menu-item>
 
       <el-menu-item index="about">
         <i class="el-icon-menu"></i>

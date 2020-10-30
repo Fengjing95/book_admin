@@ -2,7 +2,7 @@
  * @Date: 2020-10-22 17:15:14
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-10-24 20:52:00
+ * @LastEditTime: 2020-10-30 16:13:17
  * @FilePath: \book-admin\src\views\user\UserList.vue
 -->
 <template>
@@ -186,6 +186,25 @@ export default {
           if (res) {
             // console.log(res);
             this.freezeFormVisible = false;
+            let day = 1
+            switch(freezeObj.bannedType) {
+              case 1:
+                day = 1
+                break
+              case 2:
+                day = 7
+                break
+              case 3:
+                day = 15
+                break
+              case 4:
+                day = 30
+                break
+              default:
+                break
+            }
+            const msgDay= freezeObj.custom ? this.time : day
+            this.$socket.emit('banned', {targetId: freezeObj.userId, msg: `经核实您存在违规现象(${freezeObj.bannedDes})，对您进行${msgDay}天禁言处理`})
             this.reload();
           }
         });
