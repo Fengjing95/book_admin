@@ -2,7 +2,7 @@
  * @Date: 2020-10-22 16:33:32
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-10-30 16:11:44
+ * @LastEditTime: 2020-11-03 15:20:21
  * @FilePath: \book-admin\src\views\LayoutItem\Aside.vue
 -->
 <template>
@@ -38,10 +38,23 @@
         <el-menu-item index="publishnotice">发布公告</el-menu-item>
       </el-submenu>
 
+      <el-submenu index="3">
+        <template slot="title">
+          <i class="el-icon-s-help"></i>
+          <span>书圈管理</span>
+        </template>
+        <el-menu-item index="discussion">书圈列表</el-menu-item>
+        <el-menu-item index="dynamic">动态列表</el-menu-item>
+      </el-submenu>
+
       <el-menu-item index="report">
         处理举报
         <el-badge v-show="$store.getters.getReportNum!==0"  :value="$store.getters.getReportNum" :max="99">
         </el-badge>
+      </el-menu-item>
+
+      <el-menu-item index="log">
+        操作日志
       </el-menu-item>
 
       <el-menu-item index="about">

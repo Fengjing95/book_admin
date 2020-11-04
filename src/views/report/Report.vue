@@ -2,7 +2,7 @@
  * @Date: 2020-10-29 20:41:29
  * @LastEditors: 小枫
  * @description: 处理举报
- * @LastEditTime: 2020-10-30 12:56:39
+ * @LastEditTime: 2020-11-03 16:10:33
  * @FilePath: \book-admin\src\views\report\Report.vue
 -->
 <template>
@@ -98,6 +98,7 @@
               // console.log(res);
               this.reportList = res.data.obj.content
               this.allPageNumber = res.data.obj.totalPages
+              this.$store.commit('setReportNum',res.data.obj.totalSize)
             }
           }
         )

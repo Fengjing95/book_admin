@@ -2,7 +2,7 @@
  * @Date: 2020-10-22 15:43:27
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-10-30 12:08:52
+ * @LastEditTime: 2020-11-03 15:45:50
  * @FilePath: \book-admin\src\App.vue
 -->
 <template>
@@ -19,16 +19,39 @@ export default {
       this.$http.get(`/report/queryreport?pageNumber=1&pageSize=1&type=2`).then(
         res => {
           if(res) {
-            
+            // console.log(res);
             this.$store.commit('setReportNum',res.data.obj.totalSize)
           }
         }
       )
     },
   },
-  created () {
-    this.getReport()
+  computed: {
+    tn() {
+      return this.$store.getters.getToken
+    }
   },
+  watch: {
+    tn(newVal) {
+      if(newVal !== null) {
+        this.$socket.emit('set_info', {msg: newVal})
+        this.getReport()
+      }
+    }
+  },
+  // created () {
+  //   if(sessionStorage.getItem('token')) {
+  //     this.getReport()
+  //   }
+  // },
+  sockets: {
+    connect() {
+      if (sessionStorage.getItem('token')) {
+        this.$socket.emit('set_info', {msg: this.$store.getters.getToken})
+        this.getReport()
+      }
+    }
+  }
 }
 </script>
 

@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-09-24 09:53:10
  * @LastEditors: 小枫
- * @LastEditTime: 2020-10-30 10:41:29
+ * @LastEditTime: 2020-11-04 09:46:16
  * @FilePath: \book-admin\src\main.js
  */
 import Vue from 'vue'
@@ -90,7 +90,7 @@ axios.interceptors.response.use(response => {
           type: 'error',
           message: '令牌过期或被非法修改请重新登陆'
         });
-        window.localStorage.clear()
+        window.sessionStorage.clear()
         store.commit('freshToken')
         router.push('/login')
         break;
@@ -111,7 +111,7 @@ axios.interceptors.response.use(response => {
           title: '错误',
           message: '异地登录，如果发生密码泄漏请尽快修改'
         })
-        window.localStorage.clear()
+        window.sessionStorage.clear()
         store.commit('freshToken')
         router.push('/login')
         break;
@@ -133,6 +133,12 @@ axios.interceptors.response.use(response => {
 
 // 绑定axios到Vue原型
 Vue.prototype.$http = axios
+
+// 挂载过滤器=>格式化时间2
+Vue.filter('formatDate2', function (date) {
+  const n = new Date(date)
+  return n.getFullYear() + '-' + (n.getMonth() + 1) + '-' + n.getDate()
+})
 
 // 挂载过滤器=>格式化时间
 Vue.filter('formatDate', function (date) {

@@ -2,11 +2,24 @@
  * @Date: 2020-10-22 17:15:14
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-10-30 16:13:17
+ * @LastEditTime: 2020-11-04 15:32:00
  * @FilePath: \book-admin\src\views\user\UserList.vue
 -->
 <template>
   <div class="user-list">
+    <div style="display: flex;text-align: left;">
+      <el-input v-model="searchName" @keyup.enter.native="searchUserById" style="width: 250px;" placeholder="输入昵称查找，回车确认"/>
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :page-count="allPageNum"
+        :reviewPageNum="pageNum"
+        @current-change="currentPageChange"
+        style="flex: 1;"
+      >
+      </el-pagination>
+    </div>
+
     <el-table :data="tableData" style="width: 100%">
       <el-table-column prop="userId" label="ID" width="80px"> </el-table-column>
       <el-table-column prop="userPhone" label="手机号" width="">
@@ -16,7 +29,7 @@
       </el-table-column>
       <el-table-column label="状态" width="">
         <template slot-scope="scope">
-          {{ scope.row.bannedPojo === null ? "正常" : "禁言" }}
+          {{ scope.row.over !== null && scope.row.over > new Date().getTime() ? "禁言" : "正常" }}
         </template>
       </el-table-column>
       <el-table-column label="身份" width="">
@@ -59,14 +72,6 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
-      background
-      layout="prev, pager, next"
-      :page-count="allPageNum"
-      :reviewPageNum="pageNum"
-      @current-change="currentPageChange"
-    >
-    </el-pagination>
 
     <el-dialog
       title="封禁用户"
@@ -141,9 +146,31 @@ export default {
       freezeFormVisible: false,
       des: null,
       time: null,
+      searchName: ''
     };
   },
+  watch: {
+    searchName(newValue) {
+      if(newValue === '' || newValue === null) {
+        this.getUserLIst()
+      }
+    }
+  },
   methods: {
+    searchUserById() {
+      this.$http.get(`/admin/querybyname?name=${this.searchName}`).then(
+        res => {
+          if(res) {
+            console.log(res);
+            this.tableData = res.data.obj
+            this.tableData.forEach(item => {
+              item.over = item.bannedPojo ? item.bannedPojo.removeDate : ''
+            })
+            this.allPageNum = 1;
+          }
+        }
+      )
+    },
     handleClick(row) {
       this.freezeUserInfo = row;
       this.freezeUserInfo.custom = false;
@@ -159,6 +186,7 @@ export default {
         .get(`/admin/queryalluser?pageNumber=${this.pageNum}&pageSize=10`)
         .then((res) => {
           if (res) {
+            // console.log(res);
             this.tableData = res.data.obj.content;
             this.tableData.forEach(item => {
               item.over = item.bannedPojo ? item.bannedPojo.removeDate : ''

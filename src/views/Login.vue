@@ -64,6 +64,7 @@ export default {
           if(res) {
             // console.log(res);
             window.sessionStorage.setItem('token', res.data.obj.token)
+            this.$store.commit('freshToken')
             this.$message.success('登录成功')
             this.$router.push('/')
           }
