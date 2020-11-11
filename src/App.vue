@@ -2,19 +2,35 @@
  * @Date: 2020-10-22 15:43:27
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-11-03 15:45:50
+ * @LastEditTime: 2020-11-11 17:21:00
  * @FilePath: \book-admin\src\App.vue
 -->
 <template>
   <div id="app">
-    <router-view></router-view>
+    <router-view v-if="isRouterAlive"></router-view>
   </div>
 </template>
 
 <script>
 export default {
   name: 'app',
+  provide() {
+    return {
+      reload: this.reload
+    }
+  },
+  data() {
+    return {
+      isRouterAlive: true
+    }
+  },
   methods: {
+    reload() {
+      this.isRouterAlive = false
+      this.$nextTick(function() {
+        this.isRouterAlive = true
+      })
+    },
     getReport() {
       this.$http.get(`/report/queryreport?pageNumber=1&pageSize=1&type=2`).then(
         res => {

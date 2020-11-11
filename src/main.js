@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-09-24 09:53:10
  * @LastEditors: 小枫
- * @LastEditTime: 2020-11-04 09:46:16
+ * @LastEditTime: 2020-11-11 19:25:45
  * @FilePath: \book-admin\src\main.js
  */
 import Vue from 'vue'
@@ -21,7 +21,7 @@ import socket from 'socket.io-client';
 // Socket
 Vue.use(
   new VueSocketIO({
-    debug: true,
+    debug: false,
     // connection: socket(`http://192.168.43.168:8081`, {
       connection: socket(`http://192.168.1.162:8081`, {
       path: '',

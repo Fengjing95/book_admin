@@ -2,7 +2,7 @@
  * @Date: 2020-10-22 16:33:32
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-11-03 15:20:21
+ * @LastEditTime: 2020-11-11 18:45:11
  * @FilePath: \book-admin\src\views\LayoutItem\Aside.vue
 -->
 <template>
@@ -47,9 +47,23 @@
         <el-menu-item index="dynamic">动态列表</el-menu-item>
       </el-submenu>
 
+      <el-submenu index="4">
+        <template slot="title">
+          <i class="el-icon-s-management"></i>
+          <span>书籍管理</span>
+        </template>
+        <el-menu-item index="booklist">书籍列表</el-menu-item>
+        <el-menu-item index="uploadbook">上传书籍</el-menu-item>
+        <el-menu-item index="type">分类管理</el-menu-item>
+      </el-submenu>
+
+      <el-menu-item index="carousel">
+        轮播管理
+      </el-menu-item>
+
       <el-menu-item index="report">
         处理举报
-        <el-badge v-show="$store.getters.getReportNum!==0"  :value="$store.getters.getReportNum" :max="99">
+        <el-badge v-show="$store.getters.getReportNum!==0" :value="$store.getters.getReportNum" :max="99">
         </el-badge>
       </el-menu-item>
 

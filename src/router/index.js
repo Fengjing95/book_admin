@@ -2,7 +2,7 @@
  * @Date: 2020-10-22 15:44:18
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-11-03 15:44:10
+ * @LastEditTime: 2020-11-11 18:47:44
  * @FilePath: \book-admin\src\router\index.js
  */
 import Vue from 'vue'
@@ -90,6 +90,38 @@ const routes = [
           title: '关于'
         }
       },
+      {
+        path: '/booklist',
+        name: 'BookList',
+        component: () => import('../views/book/BookList'),
+        meta: {
+          title: '书籍列表'
+        }
+      },
+      {
+        path: '/uploadbook',
+        name: 'UploadBook',
+        component: () => import('../views/book/UploadBook'),
+        meta: {
+          title: '上传书籍'
+        }
+      },
+      {
+        path: '/type',
+        name: 'Type',
+        component: () => import('../views/book/Type'),
+        meta: {
+          title: '分类管理'
+        }
+      },
+      {
+        path: '/carousel',
+        name: 'Carousel',
+        component: () => import('../views/Carousel'),
+        meta: {
+          title: '轮播管理'
+        }
+      }
     ],
     beforeEnter: (to, from, next) => {
       if (store.getters.getToken) {

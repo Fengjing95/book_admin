@@ -2,7 +2,7 @@
  * @Date: 2020-10-28 09:45:29
  * @LastEditors: 小枫
  * @description: 发布公告
- * @LastEditTime: 2020-10-28 21:00:39
+ * @LastEditTime: 2020-11-11 16:51:00
  * @FilePath: \book-admin\src\views\notice\PublishNotice.vue
 -->
 <template>
@@ -11,7 +11,6 @@
     <mavon-editor v-model="oldContent" @change="changeData" style="min-height: 600px;" ref="mavon"/>
   </div>
 </template>
-// TODO 动态管理
 <script>
   export default {
     data() {
