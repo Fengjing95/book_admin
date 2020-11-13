@@ -2,7 +2,7 @@
  * @Date: 2020-11-03 10:54:27
  * @LastEditors: 小枫
  * @description: 管理员操作日志
- * @LastEditTime: 2020-11-03 15:14:58
+ * @LastEditTime: 2020-11-13 14:51:37
  * @FilePath: \book-admin\src\views\log\Log.vue
 -->
 <template>
@@ -48,7 +48,7 @@
         this.pageNumber = val
       },
       getLogList() {
-        this.$http.get(`/admin/log/querylog?pageNumber=1&pageSize=10`).then(
+        this.$http.get(`/admin/log/querylog?pageNumber=${this.pageNumber}&pageSize=12`).then(
           res => {
             if(res) {
               this.logList = res.data.obj.content

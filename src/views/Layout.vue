@@ -2,7 +2,7 @@
  * @Date: 2020-10-22 16:16:51
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-10-24 17:46:39
+ * @LastEditTime: 2020-11-13 16:21:31
  * @FilePath: \book-admin\src\views\Layout.vue
 -->
 <template>
@@ -15,7 +15,7 @@
         <el-header style="background-color: #f5f5f5;">
           <layout-header />
         </el-header>
-        <el-main style="padding: 17px 20px">
+        <el-main style="padding: 17px 20px; max-height: calc(100vh - 80px)">
           <router-view v-if="isRouterAlive"/>
         </el-main>
         <el-footer style="height: 20px">
