@@ -2,7 +2,7 @@
  * @Date: 2020-10-22 15:44:18
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-11-11 18:47:44
+ * @LastEditTime: 2020-11-18 21:26:03
  * @FilePath: \book-admin\src\router\index.js
  */
 import Vue from 'vue'
@@ -80,14 +80,6 @@ const routes = [
         component: () => import('../views/log/Log'),
         meta: {
           title: '操作记录'
-        }
-      },
-      {
-        path: '/about',
-        name: 'About',
-        component: () => import('../views/About'),
-        meta: {
-          title: '关于'
         }
       },
       {

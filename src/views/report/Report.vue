@@ -2,13 +2,13 @@
  * @Date: 2020-10-29 20:41:29
  * @LastEditors: 小枫
  * @description: 处理举报
- * @LastEditTime: 2020-11-03 16:10:33
+ * @LastEditTime: 2020-11-18 09:56:15
  * @FilePath: \book-admin\src\views\report\Report.vue
 -->
 <template>
   <div class="report">
     <div style="text-align: left;display: flex;">
-      <el-select v-model="type" placeholder="请选择分类">
+      <el-select v-model="type" placeholder="请选择分类" size="small">
         <el-option
           v-for="item in options"
           :key="item.value"

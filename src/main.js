@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-09-24 09:53:10
  * @LastEditors: 小枫
- * @LastEditTime: 2020-11-11 19:25:45
+ * @LastEditTime: 2020-11-18 19:20:57
  * @FilePath: \book-admin\src\main.js
  */
 import Vue from 'vue'
@@ -129,7 +129,6 @@ axios.interceptors.response.use(response => {
     });
   }
 })
-// TODO 500跳转页面
 
 // 绑定axios到Vue原型
 Vue.prototype.$http = axios

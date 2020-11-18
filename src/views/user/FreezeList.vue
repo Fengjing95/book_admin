@@ -2,13 +2,13 @@
  * @Date: 2020-10-22 17:15:14
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-10-30 15:37:47
+ * @LastEditTime: 2020-11-18 09:55:21
  * @FilePath: \book-admin\src\views\user\FreezeList.vue
 -->
 <template>
   <div class="user-list">
     <div style="text-align: left;display: flex;">
-      <el-select v-model="type" placeholder="请选择分类">
+      <el-select v-model="type" placeholder="请选择分类" size="small">
         <el-option
           v-for="item in options"
           :key="item.value"

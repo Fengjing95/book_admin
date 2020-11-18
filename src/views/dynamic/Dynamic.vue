@@ -2,13 +2,13 @@
  * @Date: 2020-11-03 15:24:13
  * @LastEditors: 小枫
  * @description: 动态管理
- * @LastEditTime: 2020-11-04 15:33:41
+ * @LastEditTime: 2020-11-18 09:55:49
  * @FilePath: \book-admin\src\views\dynamic\Dynamic.vue
 -->
 <template>
   <div class="dynamic">
     <div style="display: flex;">
-      <el-input style="width: 200px;" v-model="bdId" placeholder="输入书圈ID查询，按回车确认" @keyup.enter.native="searchByBdId" />
+      <el-input size="small" style="width: 200px;" v-model="bdId" placeholder="输入书圈ID查询，按回车确认" @keyup.enter.native="searchByBdId" />
       <el-pagination
         background
         layout="prev, pager, next"

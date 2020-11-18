@@ -2,7 +2,7 @@
  * @Date: 2020-10-22 16:33:32
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-11-11 18:45:11
+ * @LastEditTime: 2020-11-18 21:26:18
  * @FilePath: \book-admin\src\views\LayoutItem\Aside.vue
 -->
 <template>
@@ -69,11 +69,6 @@
 
       <el-menu-item index="log">
         操作日志
-      </el-menu-item>
-
-      <el-menu-item index="about">
-        <i class="el-icon-menu"></i>
-        <span slot="title">关于</span>
       </el-menu-item>
     </el-menu>
   </div>

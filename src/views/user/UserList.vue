@@ -2,13 +2,13 @@
  * @Date: 2020-10-22 17:15:14
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-11-04 15:32:00
+ * @LastEditTime: 2020-11-18 09:55:10
  * @FilePath: \book-admin\src\views\user\UserList.vue
 -->
 <template>
   <div class="user-list">
     <div style="display: flex;text-align: left;">
-      <el-input v-model="searchName" @keyup.enter.native="searchUserById" style="width: 250px;" placeholder="输入昵称查找，回车确认"/>
+      <el-input size="small" v-model="searchName" @keyup.enter.native="searchUserById" style="width: 250px;" placeholder="输入昵称查找，回车确认"/>
       <el-pagination
         background
         layout="prev, pager, next"

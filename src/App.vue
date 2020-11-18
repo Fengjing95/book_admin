@@ -2,7 +2,7 @@
  * @Date: 2020-10-22 15:43:27
  * @LastEditors: 小枫
  * @description: 123
- * @LastEditTime: 2020-11-11 17:21:00
+ * @LastEditTime: 2020-11-18 18:54:49
  * @FilePath: \book-admin\src\App.vue
 -->
 <template>
@@ -66,7 +66,7 @@ export default {
         this.$socket.emit('set_info', {msg: this.$store.getters.getToken})
         this.getReport()
       }
-    }
+    },
   }
 }
 </script>

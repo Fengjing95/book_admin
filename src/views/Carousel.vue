@@ -2,13 +2,13 @@
  * @Date: 2020-11-11 18:47:25
  * @LastEditors: 小枫
  * @description: description
- * @LastEditTime: 2020-11-11 20:42:58
+ * @LastEditTime: 2020-11-18 09:54:08
  * @FilePath: \book-admin\src\views\Carousel.vue
 -->
 <template>
   <div class="carousel">
     <div style="display: flex">
-      <el-button type="primary" @click="addShowVisiable = true"
+      <el-button type="primary" @click="addShowVisiable = true" size="small"
         >添加轮播图</el-button
       >
       <el-pagination
